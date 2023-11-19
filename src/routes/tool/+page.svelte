@@ -127,6 +127,7 @@
 <div class="flex-col flex items-center">
 {#if !show}
 <div class="p-4">
+    <div class="p-2 w-full text-center font-bold text-lg">Select a Voice</div>
     <Popover.Root bind:open let:ids>
         <Popover.Trigger asChild let:builder>
         <Button
@@ -169,12 +170,12 @@
 </div>
 <!-- <Button on:click={() => {console.log(selectedValue);(getAudio(articleText,people.WW)).then(data => data.play())}} class="m-4">Get Audio</Button> -->
 
+<div class="p-2 w-full text-center font-bold text-lg">Enter Text to Process</div>
 
-<textarea contenteditable class="bg-slate-300 w-[80%] mx-[10%] rounded-sm" rows="8" cols="50" bind:value={articleText}></textarea>
+<textarea contenteditable class="bg-slate-300 w-[80%] mx-[10%] rounded-sm p-2" rows="8" cols="50" bind:value={articleText}></textarea>
 
-
+<div class="">
 <Button class="m-4" on:click={clearText}>Clear Text</Button>
-
 {#if generating}
 <Button disabled><Loader2 class="mr-2 h-4 w-4 animate-spin"></Loader2>Generating...</Button>
 {:else}
@@ -185,9 +186,9 @@
     }
 
     }
-}>Process Text</Button>
+}>Generate</Button>
 {/if}
-
+</div>
 
 
 {:else}
