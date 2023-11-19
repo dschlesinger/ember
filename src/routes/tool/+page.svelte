@@ -65,7 +65,12 @@
         show = true
 
         query(input).then((response) => {
-	    summary = response[0].summary_text;
+        try{
+	        summary = response[0].summary_text;
+        }
+        catch{
+            summary = "Failed"
+        }
     });
 
     }
@@ -196,7 +201,7 @@
 
 {#each Array(chunks.length) as _,i}
     <div class="flex bg-slate-300 sm:w-[80%] w-[95%] my-10 rounded-sm items-center">
-        <div class="flex-[2] pl-2">{chunks[i]}</div>
+        <div class="flex-[2] p-2">{chunks[i]}</div>
         <div class="flex-1 flex items-center align-middle">
             <Button on:click={() => {audioclips[i].play()}} class="mx-[40%] w-[20%]">Play</Button>
         </div>
