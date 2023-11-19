@@ -9,7 +9,7 @@
 
     import { HfInference } from '@huggingface/inference'
 
-    import { PUBLIC_HUGGING_FACE_API_KEY } from '$env/static/public';
+    import { PUBLIC_HUGGING_FACE_API_KEY,PUBLIC_BB_KEY,PUBLIC_DA_KEY,PUBLIC_WW_KEY } from '$env/static/public';
 
     const hf = new HfInference(PUBLIC_HUGGING_FACE_API_KEY)
 
@@ -31,12 +31,12 @@
 
     let summary:string = "";
 
-    let people:any = {"Walter White":"mNCDGuyhRTaD1FBkpIgC","David Attenborough":"sxZQleBXOa63dIzAUEBB", "Bilbo Baggins":"ziz4A9lp1um71gAVbIwe"}
+    let people:any = {"Walter White":PUBLIC_WW_KEY,"David Attenborough":PUBLIC_DA_KEY, "Bilbo Baggins":PUBLIC_BB_KEY}
 
     let chunks:string[] = []
 
 
-    const getAudio = async (paragraph:string,person:string = "mNCDGuyhRTaD1FBkpIgC") => {
+    const getAudio = async (paragraph:string,person:string = PUBLIC_WW_KEY) => {
         let data = await audio(paragraph, person) 
         audioBlob = new Blob([data], { type: 'audio/mpeg' });
         url = URL.createObjectURL(audioBlob);
